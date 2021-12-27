@@ -13,6 +13,7 @@ import (
 var datadir *string
 var bindaddr *string
 var _ *string
+var version *string
 
 // init does basic initialization of the KnowledgeCat applications - establishes connection
 // with databases, performs migrations if needed.
@@ -26,13 +27,13 @@ func init() {
 
 // main() is main entrypoint for application.
 func main() {
-	fmt.Println("KnowledgeCat 0.0.1")
+	fmt.Println("KnowledgeCat 0.0.2-dev")
 	fmt.Println("==================\n\n")
 	fmt.Println("Data directory:", *datadir)
 	fmt.Println("Application will listen on:", *bindaddr)
+
 	r := mux.NewRouter()
-	r.HandleFunc("/{namespace}/{title}", ArticleHandler)
-	r.HandleFunc("/", HomeHandler)
+	generateRoutes(r)
 	http.Handle("/", r)
 	srv := &http.Server{
 		Handler:      r,
