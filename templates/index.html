@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Horizontal - Mazer Admin Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+
+    <link rel="stylesheet" href="/static/vendors/iconly/bold.css">
+
+    <link rel="stylesheet" href="/static/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="/static/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/css/app.css">
+    <link rel="shortcut icon" href="/static/images/favicon.svg" type="image/x-icon">
+</head>
+
+<body>
+<div id="app">
+    <div id="main" class="layout-horizontal">
+        <header class="mb-5">
+            <div class="header-top">
+                <div class="container">
+                    <div class="logo">
+                        <a href="/"><h2>KnowledgeCat</h2></a>
+                    </div>
+                    <div class="header-top-right">
+
+                        <!-- Burger button responsive -->
+                        <a href="#" class="burger-btn d-block d-xl-none">
+                            <i class="bi bi-justify fs-3"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <nav class="main-navbar">
+                <div class="container">
+                    <ul>
+                        <li class="menu-item  ">
+                            <a href="/" class='menu-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Home</span>
+                            </a>
+                        </li>
+
+
+                        <li class="menu-item has-sub">
+                            <a href="#" class='menu-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Namespaces</span>
+                            </a>
+                            <div class="submenu ">
+                                <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
+                                <div class="submenu-group-wrapper">
+
+
+                                    <ul class="submenu-group">
+                                        {{range .namespaces}}
+
+
+
+                                        <li class="submenu-item  ">
+                                            <a href="/{{.Mnemonic}}/" class='submenu-link'>{{.Name}}</a>
+
+
+                                        </li>
+                                        {{end}}
+                                    </ul>
+
+
+
+                                </div></div>
+
+                        </li>
+
+
+                        <li class="menu-item  has-sub">
+                            <a href="#" class='menu-link'>
+                                <i class="bi bi-life-preserver"></i>
+                                <span>Support</span>
+                            </a>
+                            <div class="submenu ">
+                                <div class="submenu-group-wrapper">
+
+
+                                    <ul class="submenu-group">
+
+                                        <li class="submenu-item  ">
+                                            <a href="https://github.com/kolektyw-io/knowledgecat"
+                                               class='submenu-link'>KnowledgeCat Homepage</a>
+
+
+                                        </li>
+
+
+                                        <li class="submenu-item  ">
+                                            <a href="https://github.com/kolektyw-io/knowledgecat/blob/main/README.md"
+                                               class='submenu-link'>Contribute</a>
+
+
+                                        </li>
+
+
+
+                                    </ul></div>
+                            </div>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </nav>
+
+        </header>
+
+        <div class="content-wrapper container">
+
+            <div class="page-heading">
+                <h3>Namespace</h3>
+            </div>
+            <div class="page-content">
+                <section class="row">
+                    <div class="col-12 col-lg-3">
+                        <div class="card">
+                            <div class="card-header py-4 px-5">In this namespace</div>
+                            <div class="card-body py-4 px-5">
+                                <div class="d-flex align-items-center">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-9">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>Available namespaces</h4>
+                                    </div>
+
+                                    <div class="card-body">
+                                        {{range .namespaces}}
+
+                                        <a href="/{{.Mnemonic}}/" class='submenu-link'>{{.Name}}</a> <br />
+                                        {{ end}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </section>
+            </div>
+
+        </div>
+
+        <footer>
+            <div class="container">
+                <div class="footer clearfix mb-0 text-muted">
+                    <div class="float-start">
+                        <p>KnowledgeCat {{.version}}</p>
+                    </div>
+                    <div class="float-end">
+                        <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
+                                href="http://kolektyw.io">kolektyw.io in Poland</a></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+<script src="/static/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+
+<script src="/static/vendors/apexcharts/apexcharts.js"></script>
+<script src="/static/js/pages/dashboard.js"></script>
+
+<script src="/static/js/pages/horizontal-layout.js"></script>
+</body>
+
+</html>
